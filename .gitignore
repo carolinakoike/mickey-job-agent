@@ -1,4 +1,6 @@
 node_modules/
 .env
-data/
 dist/
+
+data/*
+!data/seen-jobs.json
