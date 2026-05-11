@@ -16,8 +16,63 @@ export type MatchResult = {
 };
 
 function normalize(text: string) {
-  return text.toLowerCase();
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
 }
+
+const wantedTitleKeywords = [
+  // Front-end
+  "frontend",
+  "front-end",
+  "front end",
+  "desenvolvedor frontend",
+  "desenvolvedora frontend",
+  "desenvolvedor front-end",
+  "desenvolvedora front-end",
+  "desenvolvedor front end",
+  "desenvolvedora front end",
+  "front end developer",
+  "frontend developer",
+
+  // React / JS / TS
+  "react",
+  "react native",
+  "javascript",
+  "typescript",
+
+  // Fullstack
+  "fullstack",
+  "full-stack",
+  "full stack",
+  "desenvolvedor fullstack",
+  "desenvolvedora fullstack",
+  "desenvolvedor full-stack",
+  "desenvolvedora full-stack",
+  "full stack developer",
+  "fullstack developer",
+
+  // Backend aceitável
+  "backend",
+  "back-end",
+  "back end",
+  "node",
+  "node.js",
+  "java",
+
+  // Genéricos tech
+  "desenvolvedor",
+  "desenvolvedora",
+  "programador",
+  "programadora",
+  "software developer",
+  "software engineer",
+  "engenheiro de software",
+  "engenheira de software",
+  "analista desenvolvedor",
+  "analista desenvolvedora",
+];
 
 export function hasForbiddenKeyword(job: Job) {
   const haystack = normalize(
@@ -70,6 +125,7 @@ export function scoreJob(job: Job) {
 
 export function filterMatchingJobs(jobs: Job[]) {
   return jobs
+    .filter((job) => hasWantedTitleKeyword(job))
     .filter((job) => !hasForbiddenKeyword(job))
     .filter((job) => !hasForbiddenTitleKeyword(job))
     .map(scoreJob)
@@ -172,5 +228,13 @@ function hasForbiddenTitleKeyword(job: Job) {
 
   return forbiddenTitleKeywords.some((keyword) =>
     title.includes(keyword.toLowerCase()),
+  );
+}
+
+function hasWantedTitleKeyword(job: Job) {
+  const title = normalize(job.title);
+
+  return wantedTitleKeywords.some((keyword) =>
+    title.includes(normalize(keyword)),
   );
 }
