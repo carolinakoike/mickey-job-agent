@@ -17,6 +17,7 @@ import {
 
 import { fetchCustomCareerPageJobs } from "./services/sources/customCareerPage.js";
 import { fetchDisneyJobs } from "./services/sources/disney.js";
+import { fetchRemotiveJobs } from "./services/sources/remotive.js";
 
 function buildTelegramMessage(results: ReturnType<typeof filterMatchingJobs>) {
   if (results.length === 0) {
@@ -103,6 +104,15 @@ async function main() {
     }
   }
 
+  console.log("Buscando Remotive...");
+
+  try {
+    const remotiveJobs = await fetchRemotiveJobs();
+    allJobs.push(...remotiveJobs);
+    console.log(`Remotive: ${remotiveJobs.length} vagas encontradas.`);
+  } catch (error) {
+    console.error("Erro ao buscar Remotive:", error);
+  }
   console.log("Buscando Disney Careers...");
 
   try {
