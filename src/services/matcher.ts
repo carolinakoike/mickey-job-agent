@@ -156,6 +156,15 @@ const forbiddenTitleKeywords = [
   "analista de tráfego",
   "analista de marketing digital",
   "analista de mídias sociais",
+  "social media",
+  "analista de conteúdo",
+  "analista de comunicação",
+  "analista de relacionamento",
+  "analista de atendimento",
+  "analista de suporte",
+  "suporte técnico",
+  "customer support",
+  "atendimento",
 ];
 
 function hasForbiddenTitleKeyword(job: Job) {
