@@ -1,4 +1,30 @@
-export const greenhouseCompanies = [
+type GreenhouseCompany = {
+  name: string;
+  boardToken: string;
+};
+
+type LeverCompany = {
+  name: string;
+  companySlug: string;
+};
+
+type AshbyCompany = {
+  name: string;
+  companySlug: string;
+};
+
+type JobBoard = {
+  name: string;
+  url: string;
+};
+
+type CareerPage = {
+  name: string;
+  url: string;
+  source: string;
+};
+
+export const greenhouseCompanies: GreenhouseCompany[] = [
   {
     name: "GitLab",
     boardToken: "gitlab",
@@ -33,9 +59,9 @@ export const greenhouseCompanies = [
   },
 ];
 
-export const leverCompanies = [];
+export const leverCompanies: LeverCompany[] = [];
 
-export const ashbyCompanies = [
+export const ashbyCompanies: AshbyCompany[] = [
   {
     name: "Supabase",
     companySlug: "Supabase",
@@ -46,7 +72,7 @@ export const ashbyCompanies = [
   },
 ];
 
-export const brazilianJobBoards = [
+export const brazilianJobBoards: JobBoard[] = [
   {
     name: "Remotar",
     url: "https://remotar.com.br",
@@ -57,7 +83,7 @@ export const brazilianJobBoards = [
   },
 ];
 
-export const disneyJobPages = [
+export const disneyJobPages: JobBoard[] = [
   {
     name: "Disney Remote",
     url: "https://www.disneycareers.com/pt-br/busca-de-vagas/remote/391/1",
@@ -80,7 +106,7 @@ export const disneyJobPages = [
   },
 ];
 
-export const customCareerPages = [
+export const customCareerPages: CareerPage[] = [
   {
     name: "Tractian",
     url: "https://careers.tractian.com/jobs",

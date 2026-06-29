@@ -153,6 +153,24 @@ npm run start
 
 Runs the agent using the configured start script.
 
+```bash
+npm run typecheck
+```
+
+Runs TypeScript validation without generating files.
+
+```bash
+npm run build
+```
+
+Compiles TypeScript output into `dist/`.
+
+```bash
+npm test
+```
+
+Runs the current validation script.
+
 ## Environment Variables
 
 | Variable | Description |
@@ -179,8 +197,8 @@ Recommended `.gitignore`:
 ```gitignore
 node_modules/
 .env
-data/
 dist/
+data/seen-jobs.json
 ```
 
 ## Configuration
@@ -248,7 +266,6 @@ V1 is focused on finding and notifying job opportunities.
 
 Future versions may include:
 
-- GitHub Actions scheduling
 - Better scoring
 - More job sources
 - Saved jobs
@@ -272,12 +289,12 @@ Future versions may include:
 - [x] Local seen jobs history
 - [x] Keyword scoring
 - [x] Long Telegram message splitting
+- [x] GitHub Actions daily run
 
 ### V1.5
 
 - [ ] Improve score weights
 - [ ] Add more Brazilian tech companies
-- [ ] Add GitHub Actions daily run
 - [ ] Improve README and setup instructions
 - [ ] Add dry-run mode
 

@@ -3,8 +3,8 @@ import { forbiddenKeywords, keywordWeights } from "../config/keywords.js";
 export type Job = {
   title: string;
   company: string;
-  location?: string;
-  description?: string;
+  location?: string | undefined;
+  description?: string | undefined;
   url: string;
   source: string;
 };
