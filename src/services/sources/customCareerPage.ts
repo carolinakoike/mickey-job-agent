@@ -113,3 +113,4 @@ function dedupeJobs(jobs: Job[]) {
 
   return Array.from(map.values());
 }
+//@ts-check
